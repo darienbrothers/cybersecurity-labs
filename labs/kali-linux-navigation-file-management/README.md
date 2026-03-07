@@ -32,6 +32,10 @@ Hostname: kali-lab-01
 
 All commands were executed directly in the Kali Linux terminal.
 
+Note:
+Initial lab exercises were performed using the default Kali user account (`kali`).  
+During later system administration practice, a dedicated lab user (`dbr0`) was created and will be used for all future labs.
+
 ---
 
 ## Lab Workspace Setup
