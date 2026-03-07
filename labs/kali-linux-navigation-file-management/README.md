@@ -2,27 +2,24 @@
 
 ## Lab Overview
 
-This lab introduces the fundamental Linux commands used to navigate the filesystem and manage files inside Kali Linux.
+This lab introduces fundamental Linux filesystem navigation and file management commands inside Kali Linux. These commands are essential when working in cybersecurity because most security tools operate in a Linux terminal environment.
 
-These commands are essential for working with cybersecurity tools because most offensive and defensive security tooling operates within a Linux environment.
-
-In this lab we will practice creating directories, creating files, moving files, copying files, reading file contents, and searching for text using common Linux commands.
+The purpose of this lab is to develop confidence using the command line to create files, organize directories, inspect file contents, and search logs for suspicious activity.
 
 ---
 
 ## Lab Objectives
 
-By completing this lab you will learn how to:
+By completing this lab you should be able to:
 
-• Navigate the Linux filesystem
-• Create and manage directories
-• Create and modify files
-• Move and rename files
-• Copy files between directories
-• View file contents
-• Search file contents using grep
+• Navigate the Linux filesystem using the terminal
+• Create directories and files
+• Move and copy files between directories
+• Inspect file contents using command-line tools
+• Search logs for specific patterns using `grep`
+• Organize investigation data into structured directories
 
-These skills form the foundation for working with security tools in Kali Linux.
+These skills form the operational foundation required before working with advanced security tools.
 
 ---
 
@@ -31,16 +28,17 @@ These skills form the foundation for working with security tools in Kali Linux.
 Machine: Kali Linux Virtual Machine
 Hypervisor: UTM
 Shell: Bash Terminal
+Hostname: kali-lab-01
 
-All commands in this lab are executed directly inside the Kali Linux terminal.
+All commands were executed directly in the Kali Linux terminal.
 
 ---
 
 ## Lab Workspace Setup
 
-First we will create a workspace where all lab files will live.
+First we created a workspace to store all files used in the lab.
 
-Open the Kali terminal and run the following commands:
+Commands used:
 
 ```
 mkdir cyber-lab-practice
@@ -48,17 +46,13 @@ cd cyber-lab-practice
 pwd
 ```
 
-What this does:
+Purpose:
 
-• `mkdir` creates a new directory
-• `cd` moves you into that directory
-• `pwd` prints the current working directory
+• `mkdir` creates a directory
+• `cd` changes the current directory
+• `pwd` confirms the current working path
 
-Screenshot checkpoint:
-
-Take a screenshot showing the output of the `pwd` command inside the new directory.
-
-Save it in:
+Screenshot evidence:
 
 ```
 screenshots/lab-workspace-created.png
@@ -66,175 +60,107 @@ screenshots/lab-workspace-created.png
 
 ---
 
-## Exercise 1 – Create Files
+## Exercise 1 — Creating Files
 
-Run the following commands:
+Commands used:
 
 ```
+touch access.log
+touch credentials.txt
 touch notes.txt
-touch tasks.txt
-touch logs.txt
 ls
 ```
 
-Explanation:
+Purpose:
 
 • `touch` creates empty files
 • `ls` lists files in the directory
 
-Screenshot checkpoint:
-
-Capture the output of `ls` showing the three files.
-
-Save screenshot as:
+Files created:
 
 ```
-screenshots/files-created.png
-```
-
----
-
-## Exercise 2 – Add Content to Files
-
-Add text to the notes file.
-
-Run:
-
-```
-echo "This is my first cybersecurity lab." > notes.txt
-echo "Learning Linux navigation and file management." >> notes.txt
-```
-
-Explanation:
-
-• `>` writes text to a file
-• `>>` appends text to a file
-
-Verify the contents:
-
-```
-cat notes.txt
-```
-
-Screenshot checkpoint:
-
-Capture the output of `cat notes.txt`.
-
-Save screenshot as:
-
-```
-screenshots/notes-file-content.png
-```
-
----
-
-## Exercise 3 – Copy a File
-
-Run:
-
-```
-cp notes.txt backup-notes.txt
-ls
-```
-
-Explanation:
-
-• `cp` copies a file
-
-You should now see:
-
-```
+access.log
+credentials.txt
 notes.txt
-backup-notes.txt
-tasks.txt
-logs.txt
 ```
 
-Screenshot checkpoint:
+Dummy log and credential content was added to simulate investigation data.
 
-Save screenshot as:
+Screenshot evidence:
 
 ```
-screenshots/file-copy.png
+screenshots/file-creation-and-grep.png
 ```
 
 ---
 
-## Exercise 4 – Move and Rename a File
+## Exercise 2 — Organizing Files
 
-Rename the tasks file.
-
-Run:
+Commands used:
 
 ```
-mv tasks.txt todo.txt
+mkdir logs credentials notes
+mv access.log logs/
+mv credentials.txt credentials/
+mv notes.txt notes/
 ls
 ```
 
-Explanation:
+Purpose:
 
-• `mv` moves or renames files
+• `mkdir` creates directories
+• `mv` moves files between directories
 
-Screenshot checkpoint:
-
-Save screenshot as:
-
-```
-screenshots/file-rename.png
-```
-
----
-
-## Exercise 5 – Search for Text Using Grep
-
-Search inside the notes file.
-
-Run:
+Directory structure created:
 
 ```
-grep cybersecurity notes.txt
+logs/
+credentials/
+notes/
 ```
 
-Explanation:
-
-`grep` searches files for specific text patterns.
-
-Screenshot checkpoint:
-
-Save screenshot as:
+A backup copy of the log file was also created:
 
 ```
-screenshots/grep-search.png
+cp logs/access.log logs/access_backup.log
+```
+
+Screenshot evidence:
+
+```
+screenshots/file-organization-and-copy.png
 ```
 
 ---
 
-## Exercise 6 – Remove a File
+## Exercise 3 — Log Analysis
 
-Run:
-
-```
-rm logs.txt
-ls
-```
-
-Explanation:
-
-• `rm` removes a file
-
-Screenshot checkpoint:
-
-Save screenshot as:
+Commands used:
 
 ```
-screenshots/file-removed.png
+head logs/access.log
+tail logs/access.log
+grep -i login logs/access.log
+grep Failed logs/access.log
+```
+
+Purpose:
+
+• `head` displays the first lines of a file
+• `tail` displays the last lines of a file
+• `grep` searches for specific text patterns inside files
+
+This exercise simulated identifying suspicious login activity inside a log file.
+
+Screenshot evidence:
+
+```
+screenshots/log-analysis-and-cleanup.png
 ```
 
 ---
 
 ## Commands Practiced
-
-The following Linux commands were practiced in this lab:
 
 ```
 pwd
@@ -247,6 +173,8 @@ cat
 cp
 mv
 rm
+head
+tail
 grep
 ```
 
@@ -254,8 +182,23 @@ grep
 
 ## Lessons Learned
 
-This lab introduced the core Linux commands used for filesystem navigation and file management in Kali Linux.
+This lab demonstrated how Linux command-line tools are used to manage files and analyze data within a cybersecurity environment.
 
-Understanding these commands is critical because cybersecurity tools often require navigating directories, manipulating files, reading logs, and searching for specific patterns inside large datasets.
+Key takeaways:
 
-These skills form the operational foundation required before moving into more advanced topics such as network scanning, exploitation frameworks, and log analysis.
+• The Linux terminal is the primary interface for most cybersecurity tools.
+• Files and directories must be organized properly during investigations.
+• Logs can be inspected quickly using tools such as `head`, `tail`, and `grep`.
+• Searching logs for suspicious patterns is a common task in both offensive security and incident response.
+
+Understanding these foundational commands is necessary before progressing to more advanced tasks such as network scanning, exploitation frameworks, and log analysis.
+
+---
+
+## Next Lab
+
+The next lab will introduce **network reconnaissance** using the tool:
+
+Nmap
+
+This lab will teach how attackers discover hosts, open ports, and services running on a network.
