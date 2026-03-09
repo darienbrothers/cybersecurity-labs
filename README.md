@@ -1,223 +1,148 @@
-# Cybersecurity Labs
+# Cybersecurity Lab Portfolio
 
-Hands-on cybersecurity labs, security research, and beginner-friendly offensive and defensive projects.
+This repository documents my hands-on cybersecurity training as I transition from QA engineering into offensive security.
 
----
+⚠️ All labs are conducted in a controlled personal environment for educational and defensive security purposes.
 
-## About This Repository
+After earning my CompTIA Security+ certification on March 5, I began building a structured home lab using Kali Linux and vulnerable virtual machines to practice real security techniques.
 
-This repository documents my hands-on cybersecurity learning as I transition from **Senior QA Engineer** into **penetration testing, security engineering, and security automation**.
-
-The goal is to build **real technical understanding** through:
-
-- structured cybersecurity labs
-- custom-built security tools
-- screenshots and evidence
-- professional-style penetration testing reports
-- defensive analysis and remediation strategies
-
-This repository will grow over time as I complete new labs and develop new tools.
+All exercises are conducted in a controlled personal lab environment.
 
 ---
 
-## Repository Structure
-cybersecurity-labs/
-│
-├── labs/
-│ └── Hands-on cybersecurity labs and experiments
-│
-├── tools/
-│ └── Custom-built scripts and security tools
-│
-├── reports/
-│ └── Professional-style lab reports and findings
-│
-└── screenshots/
-└── Evidence and images from labs
+# Lab Roadmap
 
+## Linux Fundamentals
 
----
+Completed
 
-## What This Repository Will Include
+* Linux Navigation & File Management
+* Linux Permissions & Ownership
+* Linux User and Group Management
+* Process Monitoring and Control
 
-### Labs
+Skills practiced:
 
-Documented cybersecurity labs that demonstrate security concepts in real environments.
-
-Each lab will include:
-
-- architecture diagrams
-- step-by-step attack methodology
-- screenshots of findings
-- explanation of vulnerabilities
-- remediation advice
+* command line navigation
+* file permissions (chmod)
+* file ownership (chown)
+* privilege groups
+* process inspection and termination
 
 ---
 
-### Tools
+## Network Reconnaissance
 
-Small custom-built security tools created to better understand cybersecurity concepts.
+In progress
 
-Examples of tools that will appear here:
+* Network Scanning with Nmap
+* Host Discovery
+* Port Scanning Techniques
+* Service Enumeration
 
-- network scanners
-- enumeration utilities
-- log analysis tools
-- packet inspection helpers
-- automation scripts
+Tools:
 
-These tools will primarily be written using **Python** as I progress through learning projects.
-
----
-
-### Reports
-
-Professional-style security reports documenting lab findings.
-
-Each report will follow a structure similar to real penetration testing engagements:
-
-- Executive Summary
-- Reconnaissance
-- Exploitation
-- Privilege Escalation
-- Lateral Movement
-- Findings
-- Risk Rating
-- Remediation
-
-This mirrors how security consultants document real-world engagements.
+* nmap
+* netstat
+* ss
+* ping
+* traceroute
 
 ---
 
-### Screenshots
+## Password Security
 
-Screenshots provide evidence of completed labs, tools in action, and discovered findings.
+Planned
 
-Examples:
-
-- command outputs
-- packet captures
-- exploitation results
-- vulnerability findings
-
----
-
-## Learning Focus
-
-This repository will cover both **offensive security (red team)** and **defensive security (blue team)** concepts.
-
-Topics will include:
-
-- network reconnaissance
-- enumeration techniques
-- WiFi security testing
-- OSINT investigations
-- packet analysis
-- log analysis
-- intrusion detection
-- security monitoring concepts
+* Password Hashing Concepts
+* Dictionary Attacks
+* Brute Force Attacks
+* Password Cracking with Hashcat
+* Password Cracking with John the Ripper
 
 ---
 
-## Planned Lab Roadmap
+## Web Application Security
 
-The following labs will be developed and documented.
+Planned
 
-### Lab 1 – Red Team Home Lab
+* Web Server Enumeration
+* Directory Discovery
+* OWASP Top 10 vulnerabilities
+* Testing against intentionally vulnerable applications
 
-Environment:
+Targets:
 
-- Kali Linux attacker machine
-- Windows 10 target machine
-- Metasploitable vulnerable VM
-- Active Directory domain environment
-
-Concepts explored:
-
-- enumeration
-- exploitation
-- privilege escalation
-- persistence techniques
+* DVWA
+* OWASP Juice Shop
+* Metasploitable Web Services
 
 ---
 
-### Lab 2 – WiFi Security Testing
+## Social Engineering & Phishing Simulation
 
-Tools used:
+Planned
 
-- WiFi adapter with monitor mode
-- Aircrack-ng
+* Phishing awareness simulation
+* Email attack simulations in a controlled environment
+* Social engineering attack methodology
 
-Experiments:
+Tools:
 
-- creating a test WiFi network
-- capturing WPA handshakes
-- attempting password cracking
-- documenting wireless security weaknesses
-
----
-
-### Lab 3 – Keylogger Research Project
-
-Language:
-
-- Python
-
-Features explored:
-
-- keystroke capture
-- encrypted logging
-- detection techniques
-- defensive mitigation strategies
+* GoPhish
+* Social Engineering Toolkit
 
 ---
 
-### Lab 4 – OSINT Investigation
+## Malware & Incident Response Basics
 
-Tools used:
+Planned
 
-- Maltego
-- theHarvester
-
-Exercise:
-
-- investigate a public company
-- collect domain infrastructure data
-- gather publicly exposed emails
-- identify potential security exposure
+* Identifying suspicious processes
+* Reverse shell analysis
+* Basic malware behavior observation
+* Log inspection and cleanup
 
 ---
 
-### Lab 5 – Physical + Network Attack Simulation
+## Mobile Security
 
-Components:
+Planned
 
-- Flipper Zero
-- WiFi attack simulation
-- USB payload testing
-- Active Directory exploitation
-
-Deliverable:
-
-A professional penetration testing report documenting:
-
-- reconnaissance
-- exploitation
-- privilege escalation
-- lateral movement
-- remediation recommendations
-
-This lab simulates a **real consulting-style penetration test engagement**.
+* Android application inspection
+* Emulator-based security testing
+* Mobile permission analysis
 
 ---
 
-## Current Learning Path
+## IoT & Embedded Security (Future)
 
-- CompTIA Security+ certified
-- NexGenT Cybersecurity Program
-- Building hands-on labs and tools
+Exploration topics:
+
+* IoT device security concepts
+* Automotive system attack surfaces
+* CAN bus fundamentals
 
 ---
+
+# Tools Used
+
+Kali Linux
+Nmap
+Metasploitable
+Hashcat
+John the Ripper
+OWASP Juice Shop
+GoPhish
+
+---
+
+# Goal
+
+Develop practical offensive security skills through structured labs and document the learning process publicly.
+
+This repository will continue to evolve as new labs are completed.
+
 
 ## Disclaimer
 
