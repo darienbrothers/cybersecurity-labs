@@ -1,53 +1,36 @@
-# Linux Process Management
+# Linux Process Management Lab
 
 ## Lab Overview
 
-This lab explores how Linux manages running processes and how administrators and security professionals monitor system activity.
+This lab introduces Linux process monitoring and control.  
+Processes represent running programs on a system and are identified by a Process ID (PID).
 
-Processes represent programs that are currently running on a system. Understanding how to inspect and control processes is critical for detecting suspicious activity, troubleshooting system performance, and responding to potential security incidents.
+Understanding how to inspect and terminate processes is important for:
 
----
-
-## Lab Objectives
-
-By completing this lab you will learn how to:
-
-• View running processes
-• Inspect system-wide processes
-• Search for specific processes
-• Monitor system activity
-• Terminate running processes
-
----
+- System administration
+- Malware detection
+- Incident response
+- Penetration testing
 
 ## Lab Environment
 
-Operating System: Kali Linux
-Hostname: kali-lab-01
-Primary User: dbr0
-Hypervisor: UTM Virtual Machine
-
----
+- OS: Kali Linux
+- Hostname: kali-lab-01
+- User: dbr0
+- Virtualization: UTM on Apple Silicon
 
 ## Commands Covered
 
-This lab will explore the following commands:
+- ps
+- ps -e
+- ps -ef
+- grep
+- kill
+- htop
 
-```
-ps
-ps -e
-ps -ef
-grep
-kill
-htop
-```
+## Screenshot Checkpoints
 
----
-
-## Screenshots
-
-Screenshots documenting the exercises in this lab will be stored in:
-
-```
-screenshots/
-```
+- Viewing active processes
+- Filtering processes
+- Killing a process
+- Monitoring processes with htop
