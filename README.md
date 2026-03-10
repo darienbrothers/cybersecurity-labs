@@ -1,5 +1,11 @@
 # Cybersecurity Lab Portfolio
 
+![Security+](https://img.shields.io/badge/CompTIA-Security%2B-red)
+![Kali Linux](https://img.shields.io/badge/Linux-Kali%20Linux-blue)
+![Nmap](https://img.shields.io/badge/Tool-Nmap-green)
+![Cybersecurity Labs](https://img.shields.io/badge/Labs-4-blueviolet)
+![Focus](https://img.shields.io/badge/Focus-Offensive%20Security-black)
+
 This repository documents my hands-on cybersecurity training as I transition from QA engineering into offensive security.
 
 ⚠️ All labs are conducted in a controlled personal environment for educational and defensive security purposes.
