@@ -43,6 +43,85 @@ The Kali Linux machine performs reconnaissance, enumeration, and security testin
 
 ---
 
+# Lab Methodology
+
+Each lab in this repository follows a structured workflow similar to real-world cybersecurity assessments.
+
+The goal is not only to learn tools, but to practice a repeatable process for discovering and analyzing security issues.
+
+## 1. Environment Setup
+
+Prepare the testing environment and verify connectivity between systems.
+
+Typical actions include:
+
+* verifying IP addresses
+* confirming network connectivity
+* preparing investigation directories
+* ensuring tools are installed and functioning
+
+---
+
+## 2. Reconnaissance
+
+Gather information about the target system or environment.
+
+Examples:
+
+* identifying active hosts
+* discovering open ports
+* mapping network services
+* identifying exposed applications
+
+Tools often used:
+
+* nmap
+* ping
+* traceroute
+* netstat
+* ss
+
+---
+
+## 3. Enumeration
+
+Once services are discovered, additional information is collected about those services.
+
+Examples:
+
+* service version detection
+* operating system identification
+* identifying authentication mechanisms
+* collecting banner information
+
+This phase helps determine potential attack surfaces.
+
+---
+
+## 4. Analysis and Documentation
+
+All findings are documented during the lab.
+
+Each lab typically includes:
+
+* commands executed
+* screenshots of results
+* scan artifacts or output files
+* explanations of findings
+* lessons learned
+
+The goal is to build a clear record of the testing process.
+
+---
+
+## 5. Continuous Learning
+
+After completing each lab, new techniques and concepts are reviewed and practiced in future exercises.
+
+As new skills are learned, additional labs will be added to this repository.
+
+---
+
 # Lab Index
 
 Each lab contains documentation, screenshots, and artifacts collected during testing.
