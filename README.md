@@ -10,6 +10,27 @@ All exercises are conducted in a controlled personal lab environment.
 
 ---
 
+# Lab Environment
+
+The labs in this repository are performed using a small isolated virtual network built with virtual machines.
+
+Attacker machine: Kali Linux  
+Target machine: Metasploitable2  
+
+Both systems run inside a controlled virtual lab network.
+
+---
+
+## Lab Network Architecture
+
+```mermaid
+graph LR
+A[Kali Linux Attacker<br>10.0.2.3] --> B[Internal NAT Lab Network]
+B --> C[Metasploitable2 Target<br>10.0.2.2]
+```
+
+---
+
 # Lab Index
 
 Each lab contains documentation, screenshots, and artifacts collected during testing.
