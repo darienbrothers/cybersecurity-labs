@@ -23,11 +23,23 @@ Both systems run inside a controlled virtual lab network.
 
 ## Lab Network Architecture
 
-```mermaid
-graph LR
-A[Kali Linux Attacker<br>10.0.2.3] --> B[Internal NAT Lab Network]
-B --> C[Metasploitable2 Target<br>10.0.2.2]
+The cybersecurity labs in this repository are conducted using an isolated virtual lab environment.
+
 ```
+Attacker Machine
+Kali Linux (10.0.2.3)
+User: dbr0
+
+        │
+        │ Internal NAT Lab Network
+        │
+
+Target Machine
+Metasploitable2 (10.0.2.2)
+Intentionally vulnerable virtual machine used for security testing
+```
+
+The Kali Linux machine performs reconnaissance, enumeration, and security testing against the Metasploitable target system within a controlled internal network.
 
 ---
 
