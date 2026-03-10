@@ -1,216 +1,160 @@
 # Linux Process Management Lab
 
-## Lab Overview
+## Objective
 
-This lab explores how Linux systems manage running processes and how administrators and security professionals monitor and control system activity.
+The goal of this lab is to understand how Linux manages running processes and how administrators and security professionals monitor and control system activity.
 
 A **process** is any program currently running on a system. Each process is assigned a **Process ID (PID)** and can be inspected, filtered, or terminated using standard Linux utilities.
 
-Understanding how to inspect and control processes is critical for:
+Skills demonstrated:
 
-• system administration
-• malware detection
-• incident response
-• penetration testing
+• Viewing active system processes  
+• Filtering processes to locate specific programs  
+• Running background processes  
+• Terminating processes using PID  
+• Monitoring system activity in real time
 
-During this lab we practiced identifying active processes, searching for specific programs, launching background processes, terminating processes, and monitoring system activity in real time.
+These skills are important for system administration, malware detection, incident response, and penetration testing.
 
 ---
 
-## Lab Environment
+## Environment
 
-Operating System: Kali Linux
-Hostname: kali-lab-01
-Primary User: dbr0
+Operating System: Kali Linux  
+Hostname: kali-lab-01  
+Primary User: dbr0  
 Virtualization Platform: UTM (Apple Silicon)
 
 ---
 
-## Commands Covered
+## Tools Used
 
-The following commands were used throughout the lab.
+The following Linux utilities were used during this lab:
 
-| Command | Purpose                                            |
-| ------- | -------------------------------------------------- |
-| ps      | display running processes for the current terminal |
-| ps -e   | display all running processes                      |
-| ps -ef  | show full detailed process list                    |
-| grep    | filter command output for specific text            |
-| kill    | terminate a process using its PID                  |
-| htop    | interactive process monitoring tool                |
+| Tool | Purpose |
+|-----|--------|
+| ps | Displays running processes |
+| grep | Filters command output |
+| kill | Terminates processes |
+| htop | Interactive system monitoring tool |
+| sleep | Creates test processes |
 
 ---
 
-## Exercise 1 — Viewing Active Processes
+## Commands Executed
 
-The `ps` command displays currently running processes.
+### Viewing Running Processes
 
-Example command:
-
-```
 ps
-```
+Displays processes running in the current terminal session.
 
-Example output:
-
-```
-PID TTY          TIME CMD
-2431 pts/0    00:00:00 bash
-2450 pts/0    00:00:00 ps
-```
-
-This command only shows processes running in the current terminal session.
-
-To view **all processes on the system**, the following command was used:
-
-```
 ps -e
-```
+Displays **all processes running on the system**.
 
-Screenshot:
-
-```
-screenshots/process-listing.png
-```
+ps -ef
+Shows processes in full detailed format including parent process IDs and ownership.
 
 ---
 
-## Exercise 2 — Searching for Processes
-
-Processes can be filtered using the `grep` utility.
-
-Example command:
-
-```
+### Searching for Processes
 ps -ef | grep bash
-```
 
 Explanation:
 
-• `ps -ef` displays all processes in full format
-• `|` sends the output to another command
+• `ps -ef` lists all running processes  
+• `|` passes output to another command  
 • `grep bash` filters results containing the word "bash"
 
-Example output:
-
-```
-dbr0      2431   2400  0 pts/0    00:00:00 bash
-dbr0      2550   2431  0 pts/0    00:00:00 grep bash
-```
-
-Screenshot:
-
-```
-screenshots/process-search-grep.png
-```
-
-This command is commonly used in security investigations to locate suspicious processes.
+This method is commonly used to locate specific processes during system monitoring or security investigations.
 
 ---
 
-## Exercise 3 — Terminating a Process
+### Creating a Background Process
 
-A background process was created using the `sleep` command.
-
-```
+A background process was created using: 
 sleep 300 &
-```
 
-The ampersand (`&`) runs the command in the background.
+Explanation:
+
+• `sleep 300` pauses execution for 300 seconds  
+• `&` runs the command in the background
 
 The process was located using:
-
-```
 ps -ef | grep sleep
-```
-
-Example output:
-
-```
-dbr0   3125   2431  0 pts/0  00:00:00 sleep 300
-```
-
-The process was terminated using:
-
-```
-kill 3125
-```
-
-If a process refuses to terminate normally, a forced termination signal can be used:
-
-```
-kill -9 <PID>
-```
-
-Screenshot:
-
-```
-screenshots/kill-process-exercise.png
-```
 
 ---
 
-## Exercise 4 — Monitoring Processes with htop
+### Terminating a Process
 
-The `htop` utility provides an interactive interface for monitoring system processes.
+Once the PID was identified, the process was terminated using:
+kill -15 <PID>
 
-Command used:
+If the process does not terminate normally, a forced termination can be used:
+kill -9 <PID>
 
-```
-htop
-```
+This sends a **SIGKILL signal**, immediately stopping the process.
 
-Features of the interface include:
+---
 
-• real-time CPU usage monitoring
-• memory usage statistics
-• process ownership and PID tracking
-• interactive process termination
+### Monitoring Processes with htop
+`htop` provides a real-time interactive interface showing:
+
+• CPU utilization  
+• memory usage  
+• running processes  
+• process hierarchy
 
 Common keyboard shortcuts:
 
-| Key | Function         |
-| --- | ---------------- |
-| F3  | search processes |
-| F4  | filter processes |
-| F5  | tree view        |
-| F9  | kill process     |
-| F10 | exit             |
-
-Screenshot:
-
-```
-screenshots/htop-process-monitor.png
-```
+| Key | Function |
+|----|----------|
+| F3 | Search |
+| F4 | Filter |
+| F5 | Tree view |
+| F9 | Kill process |
+| F10 | Exit |
 
 ---
 
-## Security Relevance
+## Findings
 
-Process monitoring is essential for detecting malicious activity on Linux systems.
+The lab demonstrated how Linux systems manage processes and how administrators can monitor and control running programs.
 
-Security analysts frequently inspect processes to identify:
+Key observations:
 
-• unauthorized remote shells
-• crypto-mining malware
-• reverse shell connections
-• privilege escalation attempts
-• suspicious background services
+• Each running program receives a **unique PID**  
+• The `ps` command allows administrators to inspect running processes  
+• The `grep` utility enables filtering large process lists  
+• Background processes can be created using `&`  
+• Processes can be terminated using the `kill` command  
+• The `htop` utility provides real-time monitoring of system activity
 
-Commands such as `ps`, `grep`, and `kill` are commonly used during **incident response and forensic investigations**.
+---
+
+## Screenshots
+
+Screenshots demonstrating the commands and results are stored in:
+screenshots/
+
+Example screenshots include:
+
+• process-listing.png  
+• process-search-grep.png  
+• kill-process-exercise.png  
+• htop-process-monitor.png  
 
 ---
 
-## Skills Demonstrated
+## Lessons Learned
 
-This lab demonstrates the ability to:
+Understanding how to monitor and control Linux processes is essential for system administration and cybersecurity operations.
 
-• inspect running Linux processes
-• filter process lists to locate specific programs
-• terminate running processes using PID values
-• monitor system resource usage
-• use interactive monitoring tools
+Security professionals frequently inspect running processes to detect:
 
-These skills are foundational for Linux system administration and cybersecurity operations.
+• malicious background services  
+• unauthorized remote shells  
+• crypto-mining malware  
+• reverse shell connections  
+• suspicious system activity
 
----
+Commands such as `ps`, `grep`, `kill`, and `htop` are commonly used during **incident response and forensic investigations**.
