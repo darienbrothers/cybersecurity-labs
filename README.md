@@ -10,6 +10,19 @@ All exercises are conducted in a controlled personal lab environment.
 
 ---
 
+# Lab Index
+
+Each lab contains documentation, screenshots, and artifacts collected during testing.
+
+| Lab | Topic | Description |
+|----|----|----|
+| [01 - Kali Linux Navigation & File Management](labs/01-kali-linux-navigation-file-management) | Linux Fundamentals | Learn Linux command line navigation, file creation, directory organization, and log inspection |
+| [02 - Linux Permissions & User Management](labs/02-linux-permissions-user-management) | Linux Security Fundamentals | Understand Linux permission models, file ownership, user management, and access control |
+| [03 - Linux Process Management](labs/03-linux-process-management) | System Monitoring | Monitor running processes, identify suspicious activity, and terminate processes |
+| [04 - Nmap Network Scanning](labs/04-nmap-network-scanning) | Network Reconnaissance | Perform host discovery, port scanning, service detection, OS fingerprinting, and enumeration |
+
+---
+
 # Lab Roadmap
 
 ## Linux Fundamentals
@@ -24,8 +37,8 @@ Completed
 Skills practiced:
 
 * command line navigation
-* file permissions (chmod)
-* file ownership (chown)
+* file permissions (`chmod`)
+* file ownership (`chown`)
 * privilege groups
 * process inspection and termination
 
@@ -33,7 +46,7 @@ Skills practiced:
 
 ## Network Reconnaissance
 
-In progress
+Completed
 
 * Network Scanning with Nmap
 * Host Discovery
@@ -127,13 +140,13 @@ Exploration topics:
 
 # Tools Used
 
-Kali Linux
-Nmap
-Metasploitable
-Hashcat
-John the Ripper
-OWASP Juice Shop
-GoPhish
+* Kali Linux
+* Nmap
+* Metasploitable
+* Hashcat
+* John the Ripper
+* OWASP Juice Shop
+* GoPhish
 
 ---
 
@@ -143,6 +156,7 @@ Develop practical offensive security skills through structured labs and document
 
 This repository will continue to evolve as new labs are completed.
 
+---
 
 ## Disclaimer
 
