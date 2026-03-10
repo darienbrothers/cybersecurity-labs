@@ -1,26 +1,27 @@
-# Nmap Network Scanning
+# Nmap Network Scanning Lab
 
 ## Objective
 
-The goal of this lab is to learn how to perform network reconnaissance using Nmap.  
-Nmap is used to discover hosts, identify open ports, detect running services, and fingerprint operating systems.
+The goal of this lab is to learn how to perform network reconnaissance using Nmap.
+
+Nmap is used to discover hosts, identify open ports, detect running services, and fingerprint operating systems on a network.
 
 Skills demonstrated:
 
-- Host discovery
-- TCP port scanning
-- SYN stealth scanning
-- UDP scanning
-- Service version detection
-- OS fingerprinting
-- Banner grabbing
+• host discovery  
+• TCP port scanning  
+• SYN stealth scanning  
+• UDP scanning  
+• service version detection  
+• OS fingerprinting  
+• banner grabbing  
 
-Source:
+Source:  
 https://nmap.org/book/man.html
 
 ---
 
-## Lab Environment
+## Environment
 
 Attacker Machine  
 Kali Linux  
@@ -34,42 +35,39 @@ Network Type
 Internal NAT Lab Network  
 
 Example Target IP  
-10.0.2.X (masked for security)
+10.0.2.X (masked)
 
 ---
 
 ## Tools Used
 
-- Nmap
-- Netcat
-- arp-scan
-- netdiscover
+• Nmap  
+• Netcat  
+• arp-scan  
+• netdiscover  
 
 ---
 
-## Lab Steps
+## Commands Executed
 
-1. Host Discovery
-2. Basic Port Scanning
-3. TCP Connect Scan
-4. SYN Stealth Scan
-5. UDP Scan
-6. Banner Grabbing
-7. Service and OS Fingerprinting
+This section will document the commands used during the lab including host discovery, port scanning, and service enumeration.
 
 ---
 
-## Evidence
+## Findings
 
-Screenshots for each step are stored in: screenshots/
+This section will summarize the results discovered during the scans including open ports, services running on the target system, and operating system detection.
 
 ---
 
-## Key Takeaways
+## Screenshots
 
-- Nmap can discover hosts and services across a network
-- Different scan types provide different levels of stealth and detail
-- Service detection and OS fingerprinting provide valuable intelligence for penetration testing
+Evidence of commands and scan results are stored in:
 
-Source:
-https://nmap.org/book/man-port-scanning-techniques.html
+screenshots/
+
+---
+
+## Lessons Learned
+
+This section will describe the reconnaissance techniques demonstrated in the lab and explain how Nmap is used during penetration testing engagements.
