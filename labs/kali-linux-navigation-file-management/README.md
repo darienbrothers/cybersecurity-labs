@@ -1,208 +1,188 @@
 # Kali Linux Navigation & File Management Lab
 
-## Lab Overview
+## Objective
 
-This lab introduces fundamental Linux filesystem navigation and file management commands inside Kali Linux. These commands are essential when working in cybersecurity because most security tools operate in a Linux terminal environment.
+The goal of this lab is to learn how to navigate the Linux filesystem and manage files using the command line.
 
-The purpose of this lab is to develop confidence using the command line to create files, organize directories, inspect file contents, and search logs for suspicious activity.
+These skills are essential in cybersecurity because most security tools operate in a Linux terminal environment.
 
----
+Skills demonstrated:
 
-## Lab Objectives
+• navigating the Linux filesystem  
+• creating directories and files  
+• copying and moving files  
+• inspecting file contents  
+• searching logs using grep  
+• organizing investigation data
 
-By completing this lab you should be able to:
-
-• Navigate the Linux filesystem using the terminal
-• Create directories and files
-• Move and copy files between directories
-• Inspect file contents using command-line tools
-• Search logs for specific patterns using `grep`
-• Organize investigation data into structured directories
-
-These skills form the operational foundation required before working with advanced security tools.
+These foundational skills are required before using advanced security tools.
 
 ---
 
-## Lab Environment
+## Environment
 
-Machine: Kali Linux Virtual Machine
-Hypervisor: UTM
-Shell: Bash Terminal
-Hostname: kali-lab-01
-
-All commands were executed directly in the Kali Linux terminal.
+Operating System: Kali Linux  
+Hostname: kali-lab-01  
+Primary User: dbr0  
+Virtualization Platform: UTM (Apple Silicon)
 
 Note:
-Initial lab exercises were performed using the default Kali user account (`kali`).  
-During later system administration practice, a dedicated lab user (`dbr0`) was created and will be used for all future labs.
+
+Initial exercises were completed using the default Kali user (`kali`).  
+Later labs use a dedicated lab user (`dbr0`) for security practice.
 
 ---
 
-## Lab Workspace Setup
+## Tools Used
 
-First we created a workspace to store all files used in the lab.
+The following Linux commands were used during this lab.
 
-Commands used:
+| Tool | Purpose |
+|-----|--------|
+| pwd | display current working directory |
+| ls | list directory contents |
+| cd | change directory |
+| mkdir | create directories |
+| touch | create empty files |
+| cp | copy files |
+| mv | move files |
+| rm | delete files |
+| cat | display file contents |
+| head | view beginning of file |
+| tail | view end of file |
+| grep | search text patterns in files |
 
-```
+---
+
+## Commands Executed
+
+### Workspace Setup
+
+A workspace was created to store investigation files.
+
 mkdir cyber-lab-practice
 cd cyber-lab-practice
 pwd
-```
 
 Purpose:
 
-• `mkdir` creates a directory
-• `cd` changes the current directory
-• `pwd` confirms the current working path
-
-Screenshot evidence:
-
-```
-screenshots/lab-workspace-created.png
-```
+• `mkdir` creates a directory  
+• `cd` changes the current directory  
+• `pwd` confirms the working path  
 
 ---
 
-## Exercise 1 — Creating Files
+### Creating Files
 
-Commands used:
-
-```
 touch access.log
 touch credentials.txt
 touch notes.txt
 ls
-```
 
 Purpose:
 
-• `touch` creates empty files
-• `ls` lists files in the directory
+• `touch` creates empty files  
+• `ls` lists files in the current directory  
 
 Files created:
 
-```
 access.log
 credentials.txt
 notes.txt
-```
-
-Dummy log and credential content was added to simulate investigation data.
-
-Screenshot evidence:
-
-```
-screenshots/file-creation-and-grep.png
-```
 
 ---
 
-## Exercise 2 — Organizing Files
+### Organizing Files
 
-Commands used:
+Directories were created to organize investigation data.
 
-```
 mkdir logs credentials notes
 mv access.log logs/
 mv credentials.txt credentials/
 mv notes.txt notes/
-ls
-```
 
-Purpose:
+A backup of the log file was created:
 
-• `mkdir` creates directories
-• `mv` moves files between directories
+cp logs/access.log logs/access_backup.log
 
-Directory structure created:
+Resulting structure:
 
-```
 logs/
 credentials/
 notes/
-```
-
-A backup copy of the log file was also created:
-
-```
-cp logs/access.log logs/access_backup.log
-```
-
-Screenshot evidence:
-
-```
-screenshots/file-organization-and-copy.png
-```
 
 ---
 
-## Exercise 3 — Log Analysis
+### Log Analysis
 
-Commands used:
+Example commands used to inspect log files:
 
-```
 head logs/access.log
 tail logs/access.log
 grep -i login logs/access.log
 grep Failed logs/access.log
-```
 
 Purpose:
 
-• `head` displays the first lines of a file
-• `tail` displays the last lines of a file
-• `grep` searches for specific text patterns inside files
+• `head` displays the first lines of a file  
+• `tail` displays the last lines of a file  
+• `grep` searches for text patterns within files  
 
-This exercise simulated identifying suspicious login activity inside a log file.
-
-Screenshot evidence:
-
-```
-screenshots/log-analysis-and-cleanup.png
-```
+This simulated searching logs for suspicious login activity.
 
 ---
 
-## Commands Practiced
+## Findings
 
-```
-pwd
-ls
-cd
-mkdir
-touch
-echo
-cat
-cp
-mv
-rm
-head
-tail
-grep
-```
+The lab demonstrated how Linux command-line tools can be used to navigate directories, organize files, and analyze log data.
+
+Key observations:
+
+• Linux systems organize data in hierarchical directories  
+• Files can be created and moved quickly using command-line tools  
+• Investigation data should be structured into logical directories  
+• Logs can be analyzed efficiently using text-processing tools such as `grep`
+
+---
+
+## Screenshots
+
+Evidence of commands and results are located in:
+screenshots/
+
+Examples include:
+
+• lab-workspace-created.png  
+• file-creation-and-grep.png  
+• file-organization-and-copy.png  
+• log-analysis-and-cleanup.png  
 
 ---
 
 ## Lessons Learned
 
-This lab demonstrated how Linux command-line tools are used to manage files and analyze data within a cybersecurity environment.
+Linux command-line navigation is a fundamental skill in cybersecurity operations.
 
-Key takeaways:
+Security professionals regularly use command-line tools to:
 
-• The Linux terminal is the primary interface for most cybersecurity tools.
-• Files and directories must be organized properly during investigations.
-• Logs can be inspected quickly using tools such as `head`, `tail`, and `grep`.
-• Searching logs for suspicious patterns is a common task in both offensive security and incident response.
+• analyze system logs  
+• organize investigation data  
+• search for indicators of compromise  
+• inspect system activity
 
-Understanding these foundational commands is necessary before progressing to more advanced tasks such as network scanning, exploitation frameworks, and log analysis.
+Understanding these commands is necessary before progressing to more advanced tasks such as network scanning, exploitation frameworks, and forensic analysis.
 
 ---
 
 ## Next Lab
 
-The next lab will introduce **network reconnaissance** using the tool:
+The next lab focuses on **Linux Permissions and User Management**.
 
-Nmap
+This lab introduces how Linux controls access to files and system resources through:
 
-This lab will teach how attackers discover hosts, open ports, and services running on a network.
+• user accounts  
+• groups  
+• file ownership  
+• permission levels (read, write, execute)
+
+Understanding Linux permissions is essential for system administration and security because improper permissions can lead to privilege escalation or unauthorized access.
