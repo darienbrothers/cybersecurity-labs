@@ -1,188 +1,90 @@
 # Kali Linux Navigation & File Management Lab
 
 ## Objective
+The goal of this lab is to master Linux filesystem navigation and file management via the command line. These foundational skills are essential for security operations, as most industry-standard tools and servers operate in a terminal environment.
 
-The goal of this lab is to learn how to navigate the Linux filesystem and manage files using the command line.
-
-These skills are essential in cybersecurity because most security tools operate in a Linux terminal environment.
-
-Skills demonstrated:
-
-• navigating the Linux filesystem  
-• creating directories and files  
-• copying and moving files  
-• inspecting file contents  
-• searching logs using grep  
-• organizing investigation data
-
-These foundational skills are required before using advanced security tools.
+**Skills demonstrated:**
+* Navigating the Linux filesystem and hierarchical structures.
+* Creating, moving, and organizing investigation data.
+* Inspecting file contents and searching logs using `grep`.
+* **Forensic Discovery:** Identifying hidden adversary artifacts.
+* **System Hardening:** Remediating insecure file permissions (Least Privilege).
 
 ---
 
 ## Environment
-
-Operating System: Kali Linux  
-Hostname: kali-lab-01  
-Primary User: dbr0  
-Virtualization Platform: UTM (Apple Silicon)
-
-Note:
-
-Initial exercises were completed using the default Kali user (`kali`).  
-Later labs use a dedicated lab user (`dbr0`) for security practice.
+* **Operating System:** Kali Linux
+* **Hostname:** kali-lab-01
+* **Primary User:** dbr0
+* **Virtualization Platform:** UTM (Apple Silicon)
 
 ---
 
 ## Tools Used
-
-The following Linux commands were used during this lab.
-
 | Tool | Purpose |
-|-----|--------|
-| pwd | display current working directory |
-| ls | list directory contents |
-| cd | change directory |
-| mkdir | create directories |
-| touch | create empty files |
-| cp | copy files |
-| mv | move files |
-| rm | delete files |
-| cat | display file contents |
-| head | view beginning of file |
-| tail | view end of file |
-| grep | search text patterns in files |
+|:---|:---|
+| **pwd** | Display current working directory |
+| **ls** | List directory contents (used with `-la` for audits) |
+| **cd** | Change directory |
+| **mkdir** | Create directories |
+| **touch** | Create empty files |
+| **cp / mv** | Copy or Move files |
+| **grep** | Search text patterns in files |
+| **find** | Forensic search tool to locate files by name/pattern |
+| **chmod** | Change file permissions for security hardening |
 
 ---
 
 ## Commands Executed
 
-### Workspace Setup
+### 1. Workspace Setup & Log Analysis
+A structured workspace was created to organize investigation data, simulating the preparation required for a security audit.
+* Created directories for `logs/`, `credentials/`, and `notes/`.
+* Simulated log analysis using `grep` to identify failed login attempts within `access.log`.
 
-A workspace was created to store investigation files.
+### 2. Security Workflow: Forensic Discovery
+This task simulates an audit where an analyst must locate "hidden" files an adversary might have buried in the system to maintain persistence.
 
-mkdir cyber-lab-practice
-cd cyber-lab-practice
-pwd
+**The Discovery:**
+Using the `find` command, a recursive search was conducted for any files containing "creds" in the name.
 
-Purpose:
+```bash
+find . -name "*creds*"
+```
+Result: Uncovered a hidden file at ./internal/backups/temp/syslog/.db_creds.txt. The leading dot (.) ensures the file remains hidden from standard ls views, a common tactic for masking sensitive data.
 
-• `mkdir` creates a directory  
-• `cd` changes the current directory  
-• `pwd` confirms the working path  
+### 3. Security Workflow: System Hardening
+Upon discovery, an audit of the file metadata revealed a critical permission vulnerability.
 
----
+The Audit:
+Running ls -la showed the file was "World Readable" (-rw-rw-r--). This configuration violates security standards by allowing any user on the system to read the credentials.
 
-### Creating Files
+The Remediation:
+Applied the Principle of Least Privilege to restrict access solely to the file owner.
 
-touch access.log
-touch credentials.txt
-touch notes.txt
-ls
+Bash
+chmod 600 internal/backups/temp/syslog/.db_creds.txt
+Result: Successfully hardened the file to -rw-------, effectively plugging the data exposure hole.
 
-Purpose:
+### Technical Evidence
+Evidence of the lab progression and security remediations are located in the screenshots/ directory:
 
-• `touch` creates empty files  
-• `ls` lists files in the current directory  
+01_lab_workspace_created.png
 
-Files created:
+02_file_creation_and_grep.png
 
-access.log
-credentials.txt
-notes.txt
+03_file_organization_and_copy.png
 
----
+04_log_analysis_and_cleanup.png
 
-### Organizing Files
+05_forensic_discovery_hidden_file.png (Uncovering the hidden credential file)
 
-Directories were created to organize investigation data.
+06_security_hardening_permissions_fix.png (Restricting file access via chmod 600)
 
-mkdir logs credentials notes
-mv access.log logs/
-mv credentials.txt credentials/
-mv notes.txt notes/
+### Lessons Learned & QA Perspective
+This lab highlights the direct overlap between Quality Assurance and Security Engineering. In software QA, the focus is on identifying and documenting code bugs; in Security, the focus is on identifying configuration bugs.
 
-A backup of the log file was created:
+The process followed here—Verification (finding the file), Documentation (logging the risk), and Remediation (applying the fix)—mirrors the standard QA lifecycle, ensuring the infrastructure is as secure and reliable as the software it runs.
 
-cp logs/access.log logs/access_backup.log
-
-Resulting structure:
-
-logs/
-credentials/
-notes/
-
----
-
-### Log Analysis
-
-Example commands used to inspect log files:
-
-head logs/access.log
-tail logs/access.log
-grep -i login logs/access.log
-grep Failed logs/access.log
-
-Purpose:
-
-• `head` displays the first lines of a file  
-• `tail` displays the last lines of a file  
-• `grep` searches for text patterns within files  
-
-This simulated searching logs for suspicious login activity.
-
----
-
-## Findings
-
-The lab demonstrated how Linux command-line tools can be used to navigate directories, organize files, and analyze log data.
-
-Key observations:
-
-• Linux systems organize data in hierarchical directories  
-• Files can be created and moved quickly using command-line tools  
-• Investigation data should be structured into logical directories  
-• Logs can be analyzed efficiently using text-processing tools such as `grep`
-
----
-
-## Screenshots
-
-Evidence of commands and results are located in:
-screenshots/
-
-Examples include:
-
-• lab-workspace-created.png  
-• file-creation-and-grep.png  
-• file-organization-and-copy.png  
-• log-analysis-and-cleanup.png  
-
----
-
-## Lessons Learned
-
-Linux command-line navigation is a fundamental skill in cybersecurity operations.
-
-Security professionals regularly use command-line tools to:
-
-• analyze system logs  
-• organize investigation data  
-• search for indicators of compromise  
-• inspect system activity
-
-Understanding these commands is necessary before progressing to more advanced tasks such as network scanning, exploitation frameworks, and forensic analysis.
-
----
-
-## Next Lab
-
-The next lab focuses on **Linux Permissions and User Management**.
-
-This lab introduces how Linux controls access to files and system resources through:
-
-• user accounts  
-• groups  
-• file ownership  
-• permission levels (read, write, execute)
-
-Understanding Linux permissions is essential for system administration and security because improper permissions can lead to privilege escalation or unauthorized access.
+### Next Lab
+The next lab moves into Network Reconnaissance and Service Enumeration, focusing on identifying open ports and vulnerable services using Nmap.
